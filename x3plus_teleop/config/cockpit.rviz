@@ -6,7 +6,7 @@ Panels:
       Expanded:
         - /Global Options1
         - /Status1
-        - /Battery1
+        - /TwistStamped1
       Splitter Ratio: 0.5
     Tree Height: 555
   - Class: rviz_common/Selection
@@ -76,6 +76,25 @@ Visualization Manager:
       size: 128
       text size: 12
       top: 32
+    - Alpha: 1
+      Angular Arrow Scale: 2
+      Angular Color: 204; 204; 51
+      Arrow Width: 0.5
+      Class: rviz_default_plugins/TwistStamped
+      Enabled: true
+      Hide Small Values: true
+      History Length: 1
+      Linear Arrow Scale: 2
+      Linear Color: 204; 51; 51
+      Name: TwistStamped
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        Filter size: 10
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /cmd_vel_stamped
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -158,5 +177,5 @@ Window Geometry:
   Views:
     collapsed: false
   Width: 1508
-  X: 28
-  Y: 28
+  X: -4
+  Y: -4

@@ -21,6 +21,12 @@ def generate_launch_description():
         executable='battery_to_float_node'
     )
 
+    # Twist to twist stamped node
+    twist_stamped_node = Node(
+        package='x3plus_convert2ui',
+        executable='twist_to_twist_stamped_node'
+    )
+
     # Rviz
     rviz_config = os.path.join(get_package_share_directory('x3plus_teleop'), 'config', 'cockpit.rviz')
     rviz_node = Node(
@@ -32,5 +38,6 @@ def generate_launch_description():
     return LaunchDescription([
         joystick_launch,
         battery_node,
+        twist_stamped_node,
         rviz_node
     ])

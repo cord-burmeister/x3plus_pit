@@ -13,10 +13,15 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(std_msgs REQUIRED)
+find_package(geometry_msgs REQUIRED)
 
 add_executable(battery_to_float_node src/battery_to_float_node.cpp)
 ament_target_dependencies(battery_to_float_node rclcpp sensor_msgs std_msgs)
 install(TARGETS battery_to_float_node DESTINATION lib/${PROJECT_NAME})
+
+add_executable(twist_to_twist_stamped_node src/twist_to_twist_stamped_node.cpp)
+ament_target_dependencies(twist_to_twist_stamped_node rclcpp geometry_msgs)
+install(TARGETS twist_to_twist_stamped_node DESTINATION lib/${PROJECT_NAME})
 
 
 
