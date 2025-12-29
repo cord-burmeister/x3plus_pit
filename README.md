@@ -21,7 +21,7 @@ Then create a new workspace and load the git repositories which are required.
 ``` bash
 mkdir -p ~/x3plus_ws/src
 cd ~/x3plus_ws/src
-wget -O x3plus_pit.repos https://raw.githubusercontent.com/cord-burmeister/x3plus/main/x3plus_pit.repos
+wget -O x3plus_pit.repos https://raw.githubusercontent.com/cord-burmeister/x3plus_pit/main/x3plus_pit.repos
 vcs import < x3plus_pit.repos
 ```
 

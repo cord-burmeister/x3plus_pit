@@ -22,9 +22,11 @@ def generate_launch_description():
     )
 
     # Rviz
+    rviz_config = os.path.join(get_package_share_directory('x3plus_teleop'), 'config', 'cockpit.rviz')
     rviz_node = Node(
         package='rviz2',
-        executable='rviz2'
+        executable='rviz2',
+        arguments=['-d', rviz_config]
     )
 
     return LaunchDescription([
