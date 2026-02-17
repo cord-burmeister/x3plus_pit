@@ -23,7 +23,9 @@ add_executable(twist_to_twist_stamped_node src/twist_to_twist_stamped_node.cpp)
 ament_target_dependencies(twist_to_twist_stamped_node rclcpp geometry_msgs)
 install(TARGETS twist_to_twist_stamped_node DESTINATION lib/${PROJECT_NAME})
 
-
+add_executable(joy_to_angles_node src/joy_to_angles_node.cpp)
+ament_target_dependencies(joy_to_angles_node rclcpp sensor_msgs std_msgs)
+install(TARGETS joy_to_angles_node DESTINATION lib/${PROJECT_NAME})
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
