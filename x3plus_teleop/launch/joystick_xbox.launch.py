@@ -13,6 +13,11 @@ def generate_launch_description():
             executable='joy_node',
             parameters=[joy_params],
          )
+    pl_node = Node(
+            package='x3plus_convert2ui',
+            executable='joy_to_angles_node',
+            name='joy_to_angles_node',
+    )
     teleop_node = Node(
             package='teleop_twist_joy', 
             executable='teleop_node',
@@ -23,5 +28,6 @@ def generate_launch_description():
 
     return LaunchDescription([
         joy_node,
+        pl_node,
         teleop_node       
     ])
