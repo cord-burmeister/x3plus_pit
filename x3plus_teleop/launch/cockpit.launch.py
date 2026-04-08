@@ -1,18 +1,29 @@
 from launch import LaunchDescription
-from launch.actions import IncludeLaunchDescription
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch_ros.actions import Node
+from launch.conditions import IfCondition
+from launch.substitutions import LaunchConfiguration, PathJoinSubstitution, PythonExpression
+from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription, LogInfo, OpaqueFunction
 
 import os
 from ament_index_python.packages import get_package_share_directory
 
 def generate_launch_description():
 
+    use_joystick = LaunchConfiguration("use_joystick")
+    declared_arguments = [
+                DeclareLaunchArgument(
+            "use_joystick",
+            default_value="true",
+            description="Whether to use joystick or not.",
+        ),
+    ]
     # Include joystick_xbox launch
     joystick_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             os.path.join(get_package_share_directory('x3plus_teleop'), 'launch', 'joystick_xbox.launch.py')
-        )
+        ),
+        condition=IfCondition(use_joystick)
     )
 
     # Battery to float node
@@ -36,6 +47,7 @@ def generate_launch_description():
     )
 
     return LaunchDescription([
+        *declared_arguments,
         joystick_launch,
         battery_node,
         twist_stamped_node,
